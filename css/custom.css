@@ -1,0 +1,48 @@
+.responsive {
+    width: 100%;
+    height: auto;
+  }
+
+  .responsive-mobile {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+  }
+
+  .responsive-btn {
+    width: auto;
+  }
+
+.certificate .bg-udemy{
+  background-color: #ed5353 !important;
+}
+.certificate .bg-cisco{
+  background-color: #7eddf4 !important;
+}
+.certificate .card-body{
+  padding: 0px !important;
+}
+.certificate .text-trophy{
+  color: yellow !important;
+}
+
+.card.certificate {
+  border: 1px solid #17a2b8 !important;
+  transition: ease-in-out 0.4s;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.card.certificate:hover {
+  transition: ease-in-out 0.4s;
+  transform: scale(1.04);
+  z-index: 4;
+  box-shadow: 0 0 10px;
+}
+
+@media (min-width: 576px) { 
+
+  #about h1, #about > .subheading a {
+    text-align: center;
+  }
+}
