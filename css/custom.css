@@ -16,6 +16,15 @@
 .certificate .bg-udemy{
   background-color: #ed5353 !important;
 }
+
+.certificate .bg-associate{
+  background-color: #3639EF !important;
+}
+
+.certificate .bg-practitioner{
+  background-color: #4B5561 !important;
+}
+
 .certificate .bg-cisco{
   background-color: #7eddf4 !important;
 }
