@@ -1,0 +1,25 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Python (labs)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (if ever added)
+node_modules/
+
+# Logs / temp
+*.log
+.tmp/
+
+# Local AWS / secrets — never commit these
+.env
+*.pem
+credentials
+aws-exports.js
