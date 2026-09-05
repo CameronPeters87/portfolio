@@ -35,6 +35,7 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function el(id) { return document.getElementById(id); }
+  function stepsHtml(a) { return '<ol class="daysteps">' + a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>"; }
 
   /* ---------- progress ---------- */
   function planTotal() { var n = 0; D.weeks.forEach(function (w) { n += Object.keys(w.days).length; }); return n; }
@@ -72,8 +73,10 @@
     if (!w) { taskHtml = "You're past the exam window. Keep the streak — review anything you flagged."; sub = ""; }
     else {
       var dow = DOW[new Date().getDay()];
-      var task = w.days[dow] || "Light day — do a 5-question quiz and drill your weak areas.";
-      taskHtml = esc(task);
+      var day = w.days[dow];
+      taskHtml = day
+        ? "<b>" + esc(day.t) + "</b>" + stepsHtml(day.s)
+        : "Light day — do a 5-question quiz and drill your weak areas.";
       sub = "Week " + w.n + " · " + esc(w.label) + " · " + esc(w.focus);
     }
     var acc = S.q.answered ? Math.round(S.q.correct / S.q.answered * 100) : 0;
@@ -116,9 +119,12 @@
       var lis = order.filter(function (d) { return w.days[d]; }).map(function (d) {
         var k = w.n + ":" + d;
         var done = !!S.plan[k];
-        return '<li><span class="dow">' + d + '</span>' +
+        var day = w.days[d];
+        return '<li>' +
           '<input type="checkbox" class="chk" data-k="' + k + '"' + (done ? " checked" : "") + '>' +
-          '<span class="' + (done ? "done" : "") + '">' + esc(w.days[d]) + "</span></li>";
+          '<details class="day"><summary><span class="dow">' + d + '</span> <span class="daytitle ' + (done ? "done" : "") + '">' + esc(day.t) + '</span></summary>' +
+          stepsHtml(day.s) +
+          '</details></li>';
       }).join("");
       html += '<div class="card"><div class="week"><div class="week-head">' +
         "<strong>Week " + w.n + " · " + esc(w.label) + '</strong><span class="dates">' + esc(w.start) + " → " + esc(w.end) + "</span></div>" +

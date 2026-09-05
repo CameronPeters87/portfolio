@@ -26,9 +26,21 @@ window.DATA = {
       n: 0, label: "Setup", start: "2026-09-05", end: "2026-09-06",
       focus: "Get set up + baseline", udemy: "Section 1 (start)", lab: "Lab 1: Converse API",
       days: {
-        Fri: "Read START-HERE + blueprint. Enable Bedrock model access.",
-        Sat: "Do Lab 1 (Converse API). Take Practice Exam 1 as a diagnostic — expect a low score.",
-        Sun: "Review diagnostic. Log weak areas. Watch Section 1 intro videos.",
+        Fri: { t: "Get set up and see the lay of the land", s: [
+          "Read the Home tab's daily ritual here - the whole method is just 3 steps a day.",
+          "Tap Cheat Sheets and skim the 5 domain titles and their % weights. Domains 1 and 2 are 57% of the exam.",
+          "Log in to AWS and switch on the models: Console -> search 'Bedrock' -> Model access -> enable a Claude model and 'Titan Text Embeddings V2' in region us-east-1. Not logged in? Type to Kiro: 'help me sign in to AWS'.",
+        ] },
+        Sat: { t: "Your first hands-on + a baseline test", s: [
+          "Do Lab 1: type to Kiro 'Start Lab 1'. It walks you through calling an AI model on AWS in about 30 minutes. It is fine if it feels new.",
+          "Open your Udemy course, Section 1, and watch 'Amazon Bedrock Overview' and 'Hands-On with the Bedrock Playground'.",
+          "Sit Udemy Practice Exam 1 as a baseline. Expect 30-50% - that is normal and just shows your start point. Tell Kiro 'log my practice exam: X%'.",
+        ] },
+        Sun: { t: "Learn from the baseline, get used to the format", s: [
+          "Go through every question you got wrong on Practice Exam 1. For each, ask Kiro: 'explain why the correct answer is right, simply.'",
+          "In the app, tap Quiz -> Domain 1 and answer 5 questions to feel the format.",
+          "Tell Kiro 'log my misses' so the app starts tracking your weak spots.",
+        ] },
       },
     },
     {
@@ -36,13 +48,42 @@ window.DATA = {
       focus: "Bedrock, model selection, data pipelines", udemy: "Section 1 + start Section 2",
       lab: "Extend Lab 1 (compare models)",
       days: {
-        Mon: "Heavy: FMs on Bedrock + Converse vs InvokeModel. Extend Lab 1.",
-        Tue: "Model selection + cost/capability tradeoffs. Quiz 5 (D1).",
-        Wed: "Resilience: Cross-Region Inference + Step Functions circuit breaker. Quiz 5.",
-        Thu: "Fine-tuning vs RAG, LoRA, SageMaker Model Registry. Quiz 5.",
-        Fri: "Data pipelines: Glue, Data Wrangler, Transcribe, Comprehend. Quiz 5.",
-        Sat: "Catch up + re-read shaky topics. Quiz 5.",
-        Sun: "Weak-area drill + 15-Q Domain 1a mini-mock. Update tracker.",
+        Mon: { t: "How to call a foundation model (the Converse API)", s: [
+          "Watch Udemy Section 1: 'Amazon Bedrock Overview' and 'More Depth on the Bedrock Converse API'.",
+          "Read Cheat Sheets -> Domain 1 (the Bedrock, Converse API and maxTokens points).",
+          "Redo Lab 1 and compare two models: tell Kiro 'Start Lab 1 and help me compare two models.'",
+          "Quiz -> Domain 1 (5 questions), then tell Kiro 'log my misses.' Done when you can say what the Converse API is in one sentence.",
+        ] },
+        Tue: { t: "Picking the right model (cost vs capability)", s: [
+          "Watch Udemy Section 4 'Cost-Effective Model Selection' and the Section 1 fine-tuning intro.",
+          "Read Cheat Sheets -> Domain 1 'RAG vs fine-tune' and the model points.",
+          "Quiz -> Domain 1 (5 questions); tell Kiro 'log my misses.'",
+        ] },
+        Wed: { t: "Making it reliable when a region is busy", s: [
+          "Watch Udemy Section 4 'Amazon Bedrock Cross-Region Inference' and Section 6 'Step Functions Circuit Breaker Pattern'.",
+          "Read Cheat Sheets -> Domain 1 'Cross-Region Inference'.",
+          "Ask Kiro: 'explain cross-region inference profiles simply, like I will be tested.' Then Quiz -> Domain 1; log misses.",
+        ] },
+        Thu: { t: "Fine-tuning vs RAG (and the cheap way, LoRA)", s: [
+          "Watch Udemy Section 1 'Fine-Tuning Foundation Models', 'Low-Rank Adaptation (LoRA)', 'Retrieval-Augmented Generation'.",
+          "Read Cheat Sheets -> Domain 1 RAG-vs-fine-tune, then ask Kiro 'give me one scenario where RAG wins and one where fine-tuning wins.'",
+          "Quiz -> Domain 1; log misses.",
+        ] },
+        Fri: { t: "Getting your data ready for the model", s: [
+          "Watch Udemy Section 2: 'SageMaker Data Wrangler', 'AWS Glue', 'Amazon Comprehend', 'AWS Transcribe'.",
+          "Read Cheat Sheets -> Domain 1 data-pipeline points and the Services sheet (data pipeline group).",
+          "Quiz -> Domain 1; log misses.",
+        ] },
+        Sat: { t: "Catch up and fix what feels shaky", s: [
+          "Open Weak Areas and tap 'Drill these now'.",
+          "Re-watch any Section 1-2 lecture that did not land; ask Kiro to 're-explain [topic] simply.'",
+          "Tell Kiro 'update my tracker' with how confident you feel (0-3) on this week's topics.",
+        ] },
+        Sun: { t: "Lock in Domain 1a", s: [
+          "Quiz -> Drill weak areas (warm-up).",
+          "Then tell Kiro 'give me a 15-question Domain 1 mock' and answer it.",
+          "Tell Kiro 'log my misses and update my tracker.' Done when you are 2+/3 on this week's topics.",
+        ] },
       },
     },
     {
@@ -50,13 +91,41 @@ window.DATA = {
       focus: "RAG, vector stores, retrieval, prompts", udemy: "Finish Section 2",
       lab: "Lab 2: RAG Knowledge Base",
       days: {
-        Mon: "Heavy: Lab 2 — build a Bedrock RAG Knowledge Base.",
-        Tue: "Vector stores: KB, OpenSearch, Aurora pgvector, S3 Vectors, DynamoDB. Quiz 5.",
-        Wed: "Chunking (fixed/semantic/hierarchical) + embeddings (Titan V2). Quiz 5.",
-        Thu: "Hybrid search + rerankers + query expansion. Quiz 5.",
-        Fri: "Prompt engineering + Bedrock Prompt Management. Quiz 5.",
-        Sat: "Bedrock Prompt Flows (chains + branching). Quiz 5.",
-        Sun: "Weak-area drill + 25-Q full Domain 1 mock. Update tracker.",
+        Mon: { t: "Build a RAG app (give the AI your own documents)", s: [
+          "Do Lab 2: tell Kiro 'Start Lab 2' - you build a Bedrock Knowledge Base over sample docs and query it.",
+          "For a preview, watch Udemy Section 1 'Bedrock Knowledge Bases' and 'Hands-On with Knowledge Bases'.",
+          "Done when you can ask your Knowledge Base a question and get an answer with a citation.",
+        ] },
+        Tue: { t: "Where the AI's memory lives (vector stores)", s: [
+          "Watch Udemy Section 2 vector-store lectures: OpenSearch, Aurora pgvector, S3 Vectors, DynamoDB.",
+          "Read Cheat Sheets -> Domain 1 'Vector store'. Ask Kiro 'when would I pick OpenSearch vs Aurora pgvector vs S3 Vectors?'",
+          "Quiz -> Domain 1; log misses.",
+        ] },
+        Wed: { t: "Chunking + embeddings (why RAG answers are good or bad)", s: [
+          "Watch Udemy Section 1 'Pre-Retrieval and Chunking Strategies', 'Managing Chunking Strategies', 'Optimizing your Vector Store and Embeddings'.",
+          "Read Cheat Sheets -> Domain 1 'Chunking' and 'Embeddings'.",
+          "Quiz -> Domain 1; log misses.",
+        ] },
+        Thu: { t: "Getting better search results (hybrid search + rerankers)", s: [
+          "Watch Udemy Section 1 'Evaluating RAG Performance' and the Section 2 're-ranker' lecture.",
+          "Read Cheat Sheets -> Domain 1 (hybrid search / reranker). Ask Kiro 'explain hybrid search and a reranker simply.'",
+          "Quiz -> Domain 1; log misses.",
+        ] },
+        Fri: { t: "Writing good prompts and managing them", s: [
+          "Watch Udemy Section 1 'Intro to Prompt Engineering', 'Prompt Best Practices', 'Amazon Bedrock Prompt Management'.",
+          "Read Cheat Sheets -> Domain 1 (prompt engineering + Prompt Management).",
+          "Quiz -> Domain 1; log misses.",
+        ] },
+        Sat: { t: "Chaining prompts together (Bedrock Prompt Flows)", s: [
+          "Watch Udemy Section 1 'Bedrock Prompt Flows' and 'Enforcing Use of Structured Data'.",
+          "Open your PromptChaining.json (in the AIP-Materials folder) and ask Kiro to walk you through what it does.",
+          "Quiz -> Domain 1; log misses.",
+        ] },
+        Sun: { t: "Big consolidation - Domain 1 is 31% of the exam", s: [
+          "Quiz -> Drill weak areas (warm-up).",
+          "Tell Kiro 'give me a 25-question full Domain 1 mock' and time yourself.",
+          "Log misses + update tracker. Done when you can describe a full RAG pipeline out loud.",
+        ] },
       },
     },
     {
@@ -64,13 +133,41 @@ window.DATA = {
       focus: "Agents, deployment, integration", udemy: "Sections 3, 5, 6",
       lab: "Lab 3: Agent on AgentCore",
       days: {
-        Mon: "Heavy: Lab 3 — build an agent (AgentCore Harness + Gateway tool).",
-        Tue: "Strands, Agent Squad, MCP, ReAct via Step Functions. Quiz 5.",
-        Wed: "Agent safety + deployment (Lambda/provisioned/SageMaker). Quiz 5.",
-        Thu: "FM API integration: streaming, backoff, routing. Quiz 5.",
-        Fri: "Enterprise integration: API GW + EventBridge, Outposts/Wavelength, CI/CD. Quiz 5.",
-        Sat: "Amplify, Q Developer, Q Business, BDA. Quiz 5.",
-        Sun: "Weak-area drill + 20-Q Domain 2 mock. Milestone: 57% covered.",
+        Mon: { t: "Build an AI agent (it uses tools on its own)", s: [
+          "Do Lab 3: tell Kiro 'Start Lab 3' - build an agent on AgentCore with a tool via Gateway.",
+          "For a preview, watch Udemy Section 3 'Amazon AgentCore Introduction' and 'Lab: Amazon Bedrock AgentCore Harnesses'.",
+          "Done when your agent calls your tool and returns an answer.",
+        ] },
+        Tue: { t: "Multi-agent systems + how agents talk to tools (MCP)", s: [
+          "Watch Udemy Section 3 'Multi-Agent Workflows', 'Strands Agents', 'Agent Squad', 'Model Context Protocol (MCP)'.",
+          "Read Cheat Sheets -> Domain 2 (agents/AgentCore/MCP). Ask Kiro 'what is the difference between Strands, Agent Squad, and AgentCore?'",
+          "Quiz -> Domain 2; log misses.",
+        ] },
+        Wed: { t: "How to deploy models + keep agents safe", s: [
+          "Watch Udemy Section 5 'Optimizing Foundation Model Deployments' and Section 3 'Short and Long-Term Agent Memory'.",
+          "Read Cheat Sheets -> Domain 2 (deployment choices + agent safety).",
+          "Quiz -> Domain 2; log misses.",
+        ] },
+        Thu: { t: "Connecting the model to apps (APIs, streaming)", s: [
+          "Watch Udemy Section 6 'AWS Lambda', 'Amazon API Gateway', 'AWS Step Functions' and Section 4 'Exponential Backoff and Connection Pooling'.",
+          "Read Cheat Sheets -> Domain 2 (FM API integration + routing).",
+          "Quiz -> Domain 2; log misses.",
+        ] },
+        Fri: { t: "Plugging AI into a real business (enterprise integration)", s: [
+          "Watch Udemy Section 6 'Amazon EventBridge', 'Amazon SQS', 'AWS Outposts', 'AWS Wavelength', 'AWS CodePipeline'.",
+          "Read Cheat Sheets -> Domain 2 (enterprise integration). Ask Kiro 'when do I use Outposts vs Wavelength?'",
+          "Quiz -> Domain 2; log misses.",
+        ] },
+        Sat: { t: "The AI helper services (Q Developer, Q Business)", s: [
+          "Watch Udemy Section 6 'AWS Amplify' and Section 3 'Amazon Q Business', 'Amazon Q Apps'.",
+          "Read Cheat Sheets -> Services (the ML/GenAI group).",
+          "Quiz -> Domain 2; log misses.",
+        ] },
+        Sun: { t: "Consolidate Domain 2 - you have now covered 57% of the exam", s: [
+          "Quiz -> Drill weak areas (warm-up).",
+          "Tell Kiro 'give me a 20-question Domain 2 mock.'",
+          "Log misses + update tracker.",
+        ] },
       },
     },
     {
@@ -78,13 +175,41 @@ window.DATA = {
       focus: "Safety, security, governance", udemy: "Sections 7 (part) + 8",
       lab: "Lab 4: Guardrails + PII",
       days: {
-        Mon: "Heavy: Lab 4 — Guardrails + Comprehend/Macie PII + the CloudWatch KMS fix.",
-        Tue: "Guardrails, custom moderation, prompt-injection defense. Quiz 5.",
-        Wed: "Hallucination reduction (grounding, confidence, JSON schema). Quiz 5.",
-        Thu: "Data security: VPC endpoints, IAM, Lake Formation, PII. Quiz 5.",
-        Fri: "Governance: model cards, Glue lineage, CloudTrail, redaction. Quiz 5.",
-        Sat: "Responsible AI: tracing, fairness/Clarify, LLM-as-judge. Quiz 5.",
-        Sun: "Weak-area drill + 20-Q Domain 3 mock. Update tracker.",
+        Mon: { t: "Build safety controls (Guardrails + PII)", s: [
+          "Do Lab 4: tell Kiro 'Start Lab 4' - add Bedrock Guardrails and a PII filter, and see the CloudWatch logging gap.",
+          "For a preview, watch Udemy Section 1 'Bedrock Guardrails' and 'Hands-On with Bedrock Guardrails'.",
+          "Done when your guardrail blocks a bad prompt and you know where PII still leaks (the logs).",
+        ] },
+        Tue: { t: "Blocking bad input and output", s: [
+          "Watch Udemy Section 1 'Token-Level Redaction' and Section 3 'Humans in the Loop'.",
+          "Read Cheat Sheets -> Domain 3 (Guardrails + prompt injection).",
+          "Quiz -> Domain 3; log misses.",
+        ] },
+        Wed: { t: "Stopping the AI from making things up", s: [
+          "Watch Udemy Section 1 'Evaluating RAG Performance' again, focusing on grounding.",
+          "Read Cheat Sheets -> Domain 3 (hallucination fix: grounding, confidence, JSON schema).",
+          "Quiz -> Domain 3; log misses.",
+        ] },
+        Thu: { t: "Protecting data and PII", s: [
+          "Watch Udemy Section 8 'AWS KMS', 'Amazon Macie', 'AWS PrivateLink', the VPC lectures, and Section 2 'Amazon Comprehend'.",
+          "Read Cheat Sheets -> Domain 3 (data security; Comprehend vs Macie).",
+          "Quiz -> Domain 3; log misses.",
+        ] },
+        Fri: { t: "Governance: proving what the AI did", s: [
+          "Watch Udemy Section 7 'AWS CloudTrail', 'AWS Lake Formation' and Section 5 'SageMaker Lineage Tracking', 'Model Registry'.",
+          "Read Cheat Sheets -> Domain 3 (governance).",
+          "Quiz -> Domain 3; log misses.",
+        ] },
+        Sat: { t: "Responsible AI (fairness, transparency)", s: [
+          "Watch Udemy Section 7 'Principles of Responsible AI', 'Bedrock Agent Tracing' and Section 5 'Model Monitor and Clarify'.",
+          "Read Cheat Sheets -> Domain 3 (Responsible AI). Ask Kiro 'how do I prove a model is not biased?'",
+          "Quiz -> Domain 3; log misses.",
+        ] },
+        Sun: { t: "Consolidate Domain 3", s: [
+          "Quiz -> Drill weak areas (warm-up).",
+          "Tell Kiro 'give me a 20-question Domain 3 mock.'",
+          "Log misses + update tracker.",
+        ] },
       },
     },
     {
@@ -92,27 +217,77 @@ window.DATA = {
       focus: "Optimize, monitor, evaluate, troubleshoot", udemy: "Sections 4, 7, 9",
       lab: "Lab 5: Evaluate + observe + break/fix",
       days: {
-        Mon: "Heavy: Lab 5 — Model Evaluations + CloudWatch/X-Ray + deliberately break/fix.",
-        Tue: "Token/cost efficiency: CountTokens, pruning, response limits. Quiz 5.",
-        Wed: "Caching + latency + temperature/top-k/top-p. Quiz 5.",
-        Thu: "Monitoring: CloudWatch, Model Invocation Logs, anomaly, X-Ray. Quiz 5.",
-        Fri: "Evaluation: Bedrock Model Evaluations, RAG eval, LLM-as-judge, ROUGE. Quiz 5.",
-        Sat: "Troubleshooting: context window, retrieval, prompts, schema. Quiz 5.",
-        Sun: "Weak-area drill + 15-Q D4+D5 mock. All 5 domains covered.",
+        Mon: { t: "Measure, watch, and fix your AI app", s: [
+          "Do Lab 5: tell Kiro 'Start Lab 5' - run a Bedrock evaluation, add CloudWatch/X-Ray monitoring, then break something and fix it.",
+          "For a preview, watch Udemy Section 7 'Amazon Bedrock Model Evaluations' and 'CloudWatch Logs'.",
+          "Done when you can read token usage in CloudWatch and diagnose one broken prompt.",
+        ] },
+        Tue: { t: "Spending less (token + cost efficiency)", s: [
+          "Watch Udemy Section 4 'Token Efficiency' and 'Maximizing Resource Utilization and Throughput'.",
+          "Read Cheat Sheets -> Domain 4 (token efficiency, CountTokens).",
+          "Quiz -> Domain 4; log misses.",
+        ] },
+        Wed: { t: "Going faster (caching + latency + settings)", s: [
+          "Watch Udemy Section 4 'Intelligent Caching Systems for GenAI' and 'Building Responsive AI Systems'.",
+          "Read Cheat Sheets -> Domain 4 (caching, latency, temperature/top-k/top-p).",
+          "Quiz -> Domain 4; log misses.",
+        ] },
+        Thu: { t: "Watching it in production (monitoring)", s: [
+          "Watch Udemy Section 7 'CloudWatch and GenAI Monitoring' and 'AWS X-Ray'.",
+          "Read Cheat Sheets -> Domain 4 (monitoring).",
+          "Quiz -> Domain 4; log misses.",
+        ] },
+        Fri: { t: "Testing AI quality (evaluation)", s: [
+          "Watch Udemy Section 7 'Evaluation Techniques for Foundation Models' and 'Evaluating LLMs with ROUGE, BLEU, and BERT scores'.",
+          "Read Cheat Sheets -> Domain 5 (metrics, ROUGE, LLM-as-judge). Ask Kiro 'what does ROUGE measure vs faithfulness?'",
+          "Quiz -> Domain 5; log misses.",
+        ] },
+        Sat: { t: "Fixing common failures (troubleshooting)", s: [
+          "Watch Udemy Section 7 'Deployment Validation Systems' and review Bedrock Agent Tracing.",
+          "Read Cheat Sheets -> Domain 5 (the 3 common failures + fixes).",
+          "Quiz -> Domain 5; log misses.",
+        ] },
+        Sun: { t: "Consolidate - all 5 domains now covered", s: [
+          "Quiz -> Drill weak areas (warm-up).",
+          "Tell Kiro 'give me a 15-question Domain 4 and 5 mock.'",
+          "Log misses + update tracker.",
+        ] },
       },
     },
     {
       n: 6, label: "Mocks + Review", start: "2026-10-12", end: "2026-10-18",
       focus: "Practice exams + close gaps", udemy: "Practice Exams 1 & 2 + section quizzes",
-      lab: "None — exam prep",
+      lab: "None - exam prep",
       days: {
-        Mon: "Full 75-Q timed mock (Practice Exam). Log every miss.",
-        Tue: "Remediate the mock with Kiro. Re-drill misses.",
-        Wed: "Second full 75-Q timed mock (Practice Exam 2). Log misses.",
-        Thu: "Remediate mock 2. Drill ordering + matching questions.",
-        Fri: "Targeted weak-area drills across all domains. Re-skim blueprint.",
-        Sat: "Light review: 20-Q mixed mock + cheat sheets. Stop early.",
-        Sun: "Rest. Skim cheat sheets. Sleep well. Exam is tomorrow.",
+        Mon: { t: "First full timed practice exam", s: [
+          "Sit a Udemy Practice Exam properly: 75 questions, 180 minutes, no notes.",
+          "Score it. Tell Kiro 'log my practice exam: X%, weak on [domains]'.",
+          "Put every wrong topic into Weak Areas (tell Kiro 'log these misses').",
+        ] },
+        Tue: { t: "Fix what you missed", s: [
+          "Ask Kiro 'teach me only what I missed on the mock', one topic at a time.",
+          "Quiz -> Drill weak areas until they stop coming up.",
+        ] },
+        Wed: { t: "Second full timed practice exam", s: [
+          "Sit the other Udemy Practice Exam: 75 questions, 180 minutes, timed.",
+          "Score it and log misses. Your target is 80%+.",
+        ] },
+        Thu: { t: "Fix misses + practice the tricky question types", s: [
+          "Remediate mock 2 with Kiro.",
+          "Practice the new question types: tell Kiro 'give me 5 ordering and 5 matching questions' (no partial credit on these).",
+        ] },
+        Fri: { t: "Targeted final drills", s: [
+          "Quiz -> Drill weak areas across all domains.",
+          "Re-skim every cheat sheet, especially Domain 1 and 2.",
+        ] },
+        Sat: { t: "Light review - do not cram", s: [
+          "One 20-question mixed mock: tell Kiro 'give me a 20-question mixed mock.'",
+          "Re-read the Exam-Day cheat sheet. Then stop early and rest.",
+        ] },
+        Sun: { t: "Rest before the exam", s: [
+          "No new material. Skim the cheat sheets once if you want.",
+          "Check exam logistics (ID, quiet room). Sleep well - the exam is tomorrow.",
+        ] },
       },
     },
   ],

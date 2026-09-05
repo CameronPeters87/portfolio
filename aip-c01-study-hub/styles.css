@@ -68,9 +68,21 @@ button, .btn { font: inherit; cursor: pointer; border-radius: 10px; border: 1px 
 .daylist { list-style: none; padding: 0; margin: 8px 0 0; }
 .daylist li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-top: 1px solid var(--line); }
 .daylist li:first-child { border-top: none; }
-.daylist .dow { flex: 0 0 42px; color: var(--accent); font-weight: 700; font-size: 13px; padding-top: 2px; }
+.day { flex: 1; }
+.day > summary { cursor: pointer; list-style: none; }
+.day > summary::-webkit-details-marker { display: none; }
+.day > summary::marker { content: ""; }
+.day > summary::before { content: "▸ "; color: var(--muted); font-size: 12px; }
+.day[open] > summary::before { content: "▾ "; }
+.daylist .dow { color: var(--accent); font-weight: 700; font-size: 13px; margin-right: 8px; }
+.daytitle { font-weight: 600; }
+.day[open] > summary .daytitle { color: var(--accent); }
+.daysteps { margin: 8px 0 6px; padding-left: 22px; }
+.daysteps li { display: list-item; border: none; padding: 4px 0; font-size: 14px; color: var(--text); }
 .chk { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent-2); }
 .done { color: var(--muted); text-decoration: line-through; }
+.today-task .daysteps { margin-top: 10px; }
+.today-task .daysteps li { color: var(--text); }
 
 /* Cheats */
 .acc { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
